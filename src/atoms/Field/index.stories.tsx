@@ -3,6 +3,7 @@ import { jsx } from "@emotion/core";
 import { Meta, Story } from "@storybook/react";
 import Field, { FieldProps } from ".";
 import { Box } from "reakit";
+import Dotscale from "../Dotscale";
 
 export default {
   title: "Atoms/Field",
@@ -18,20 +19,20 @@ const Template = (args: FieldProps) => (
 export const Empty: Story<FieldProps> = Template.bind({});
 
 Empty.args = {
-  value: 0,
+  children: <Dotscale value={0} />,
   label: "Attribute",
 };
 
 export const One: Story<FieldProps> = Template.bind({});
 
 One.args = {
-  value: 1,
+  children: <Dotscale value={1} />,
   label: "Attribute",
 };
 
 export const Five: Story<FieldProps> = Template.bind({});
 
 Five.args = {
-  value: 5,
+  children: <Dotscale value={0} />,
   label: "Attribute",
 };
