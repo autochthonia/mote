@@ -2,10 +2,14 @@
 import { jsx } from "@emotion/core";
 import { Meta, Story } from "@storybook/react";
 import Dotscale, { DotscaleProps } from ".";
+import Dot from "../Dot";
 
 export default {
   title: "Atoms/Dotscale",
   component: Dotscale,
+  subcomponents: {
+    Dot,
+  },
 } as Meta;
 
 const Template = (args: DotscaleProps) => <Dotscale {...args} />;
