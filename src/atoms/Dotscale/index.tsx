@@ -1,3 +1,5 @@
+/** @jsx jsx */
+import { jsx } from "@emotion/core";
 import { Fragment, FunctionComponent, ComponentProps } from "react";
 import Dot from "../Dot";
 
@@ -10,13 +12,13 @@ const Dotscale: FunctionComponent<{
   children?: never;
 }> = ({ min = 0, max = 5, value }) => {
   return (
-    <>
+    <Fragment>
       {Array(max)
         .fill(undefined)
         .map((_, i) => (
           <Dot key={i} filled={value >= i + 1} />
         ))}
-    </>
+    </Fragment>
   );
 };
 

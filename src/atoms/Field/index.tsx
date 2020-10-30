@@ -1,3 +1,5 @@
+/** @jsx jsx */
+import { jsx } from "@emotion/core";
 import { FunctionComponent, ComponentProps } from "react";
 import { Box } from "reakit";
 import Dotscale from "../Dotscale";
@@ -12,7 +14,7 @@ const Field: FunctionComponent<{
   children?: never;
 }> = ({ min = 0, max = 5, label, value }) => {
   return (
-    <Box>
+    <Box css={{ display: "flex", justifyContent: "space-between" }}>
       <span>{label}</span>
       <span>
         <Dotscale value={value} min={min} max={max} />

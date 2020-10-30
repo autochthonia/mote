@@ -36,6 +36,7 @@
     "react": "^16.14.0"
   },
   "dependencies": {
+    "@emotion/core": "^10.0.35",
     "reakit": "^1.2.5"
   }
 }
