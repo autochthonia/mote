@@ -1,4 +1,5 @@
-import React from "react";
+/** @jsx jsx */
+import { jsx } from "@emotion/core";
 import { Meta, Story } from "@storybook/react";
 import Dotscale, { DotscaleProps } from ".";
 

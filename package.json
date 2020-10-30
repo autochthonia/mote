@@ -37,6 +37,7 @@
   },
   "dependencies": {
     "@emotion/core": "^10.0.35",
-    "reakit": "^1.2.5"
+    "reakit": "^1.2.5",
+    "use-editable": "^1.1.3"
   }
 }
