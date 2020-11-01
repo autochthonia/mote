@@ -2,22 +2,34 @@
 import { jsx } from "@emotion/core";
 import { forwardRef } from "react";
 import Dotscale from "../Dotscale";
-import Field from "../Field";
+import Field, { FieldProps } from "../Field";
 
-export interface DotrangeInputProps {
+export interface DotrangeInputProps extends Omit<FieldProps, "children"> {
   label: string;
   value: number;
   min?: number;
   max?: number;
-  onChange: (newValue: string) => void;
+  onChange: (newValue: number) => void;
   className?: string;
+  children?: never;
 }
 
 const DotrangeInput = forwardRef<HTMLDivElement, DotrangeInputProps>(
-  ({ label, value, min, max, onChange, className, ...props }, ref) => {
+  ({ value = 0, min = 0, max = 5, onChange, children, ...props }, ref) => {
     return (
-      <Field label={label} className={className}>
-        <Dotscale value={value} min={min} max={max} />
+      <Field {...props}>
+        <Dotscale
+          value={value}
+          min={min}
+          max={max}
+          onChange={(newValue) => {
+            if (value === 1 && newValue === 1 && min < 1) {
+              onChange?.(0);
+            } else {
+              onChange?.(Math.max(Math.min(newValue, Math.max(min, max)), Math.min(min, max)));
+            }
+          }}
+        />
       </Field>
     );
   }

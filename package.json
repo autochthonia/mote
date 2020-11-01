@@ -36,6 +36,7 @@
     "eslint-plugin-react-hooks": "^4.2.0",
     "prettier": "^2.0.5",
     "react-is": "^17.0.1",
+    "reakit": "^1.2.5",
     "typescript": "^4.1.0-dev.20201029"
   },
   "engines": {
@@ -46,7 +47,6 @@
   },
   "dependencies": {
     "@emotion/core": "^10.0.35",
-    "reakit": "^1.2.5",
     "use-editable": "^1.1.3"
   }
 }

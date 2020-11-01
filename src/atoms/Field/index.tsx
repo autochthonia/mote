@@ -6,12 +6,10 @@ import { Box } from "reakit";
 export type FieldProps = ComponentProps<typeof Field>;
 
 const Field: FunctionComponent<{
-  min?: number;
-  max?: number;
   label: string;
   children: ReactNode;
   className?: string;
-}> = ({ min = 0, max = 5, label, children, className }) => {
+}> = ({ label, children, className }) => {
   return (
     <Box
       css={{ display: "flex", justifyContent: "space-between" }}

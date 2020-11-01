@@ -11,7 +11,14 @@ export default {
 
 const Template = (args: DotrangeInputProps) => {
   const [value, onChange] = useStoryState(args.value);
-  return <DotrangeInput css={{ maxWidth: 250 }} {...args} value={value} />;
+  return (
+    <DotrangeInput
+      css={{ maxWidth: 250 }}
+      {...args}
+      value={value}
+      onChange={onChange}
+    />
+  );
 };
 
 export const Empty: Story<DotrangeInputProps> = Template.bind({});
