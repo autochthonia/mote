@@ -1,10 +1,10 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/core";
+import { action } from "@storybook/addon-actions";
 import { Meta, Story } from "@storybook/react";
-import FieldGroup, { FieldGroupProps } from ".";
-import { Box } from "reakit";
-import Dotscale from "../Dotscale";
 import { Fragment } from "react";
+import { Box } from "reakit";
+import FieldGroup, { FieldGroupProps } from ".";
 import DotrangeInput from "../DotrangeInput";
 
 export default {
@@ -23,9 +23,13 @@ export const Primary: Story<FieldGroupProps> = Template.bind({});
 Primary.args = {
   children: (
     <Fragment>
-      <DotrangeInput label="Dexterity" value={4} onChange={() => {}} />
-      <DotrangeInput label="Strength" value={2} onChange={() => {}} />
-      <DotrangeInput label="Stamina" value={5} onChange={() => {}} />
+      <DotrangeInput
+        label="Dexterity"
+        value={4}
+        onChange={action("onChange")}
+      />
+      <DotrangeInput label="Strength" value={2} onChange={action("onChange")} />
+      <DotrangeInput label="Stamina" value={5} onChange={action("onChange")} />
     </Fragment>
   ),
   label: "Physical",

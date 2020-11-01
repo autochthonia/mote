@@ -9,24 +9,33 @@ export interface DotrangeInputProps extends Omit<FieldProps, "children"> {
   value: number;
   min?: number;
   max?: number;
-  onChange: (newValue: number) => void;
+  onChange: (newValue: number, label: string) => void;
   className?: string;
   children?: never;
 }
 
 const DotrangeInput = forwardRef<HTMLDivElement, DotrangeInputProps>(
-  ({ value = 0, min = 0, max = 5, onChange, children, ...props }, ref) => {
+  (
+    { label, value = 0, min = 0, max = 5, onChange, children, ...props },
+    ref
+  ) => {
     return (
-      <Field {...props}>
+      <Field label={label} {...props}>
         <Dotscale
+          ref={ref}
           value={value}
-          min={min}
-          max={max}
+          num={max}
           onChange={(newValue) => {
             if (value === 1 && newValue === 1 && min < 1) {
-              onChange?.(0);
+              onChange?.(0, label);
             } else {
-              onChange?.(Math.max(Math.min(newValue, Math.max(min, max)), Math.min(min, max)));
+              onChange?.(
+                Math.max(
+                  Math.min(newValue, Math.max(min, max)),
+                  Math.min(min, max)
+                ),
+                label
+              );
             }
           }}
         />

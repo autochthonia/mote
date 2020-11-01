@@ -1,23 +1,25 @@
 /** @jsx jsx */
 import { jsx } from "@emotion/core";
-import { FunctionComponent, ComponentProps, ComponentType } from "react";
-import { useToolbarState, Toolbar, ToolbarItem } from "reakit/Toolbar";
+import { ComponentProps, forwardRef } from "react";
+import { Toolbar, ToolbarItem, useToolbarState } from "reakit/Toolbar";
 import Dot from "../Dot";
 
 export type DotscaleProps = ComponentProps<typeof Dotscale>;
 
-const Dotscale: FunctionComponent<{
-  min?: number;
-  max?: number;
-  value: number;
-  children?: never;
-  onChange?: (newValue: number) => void;
-}> = ({ min = 0, max = 5, value, onChange }) => {
+const Dotscale = forwardRef<
+  HTMLDivElement,
+  {
+    num?: number;
+    value: number;
+    children?: never;
+    onChange?: (newValue: number) => void;
+  }
+>(({ num = 5, value, onChange }, ref) => {
   const toolbar = useToolbarState({ loop: false, orientation: "horizontal" });
 
   return (
-    <Toolbar css={{ flexBasis: "auto" }} {...toolbar}>
-      {Array(max)
+    <Toolbar css={{ flexBasis: "auto" }} {...toolbar} ref={ref}>
+      {Array(num)
         .fill(undefined)
         .map((_, i) => (
           <ToolbarItem
@@ -30,6 +32,6 @@ const Dotscale: FunctionComponent<{
         ))}
     </Toolbar>
   );
-};
+});
 
 export default Dotscale;

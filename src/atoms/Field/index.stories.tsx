@@ -33,6 +33,6 @@ One.args = {
 export const Five: Story<FieldProps> = Template.bind({});
 
 Five.args = {
-  children: <Dotscale value={0} />,
+  children: <Dotscale value={5} />,
   label: "Attribute",
 };
