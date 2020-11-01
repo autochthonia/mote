@@ -13,12 +13,18 @@ const Dotscale = forwardRef<
     value: number;
     children?: never;
     onChange?: (newValue: number) => void;
+    className?: string;
   }
->(({ num = 5, value, onChange }, ref) => {
+>(({ num = 5, value, onChange, className }, ref) => {
   const toolbar = useToolbarState({ loop: false, orientation: "horizontal" });
 
   return (
-    <Toolbar css={{ flexBasis: "auto" }} {...toolbar} ref={ref}>
+    <Toolbar
+      css={{ flexBasis: "auto" }}
+      {...toolbar}
+      ref={ref}
+      className={className}
+    >
       {Array(num)
         .fill(undefined)
         .map((_, i) => (

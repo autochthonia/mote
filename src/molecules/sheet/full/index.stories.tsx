@@ -8,7 +8,9 @@ export default {
   component: FullSheet,
 } as Meta;
 
-const Template = (args: FullSheetProps) => <FullSheet {...args} />;
+const Template = (args: FullSheetProps) => (
+  <FullSheet css={{ maxWidth: 480 }} {...args} />
+);
 
 export const Primary: Story<FullSheetProps> = Template.bind({});
 

@@ -19,6 +19,7 @@ const DotrangeInput = forwardRef<HTMLDivElement, DotrangeInputProps>(
     return (
       <Field {...props}>
         <Dotscale
+          css={{ marginLeft: "auto" }}
           ref={ref}
           value={value}
           num={max}

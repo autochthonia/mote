@@ -6,7 +6,10 @@ import DotrangeInput from "../../../atoms/DotrangeInput";
 import FieldGroup from "../../../atoms/FieldGroup";
 import { ABILITIES, ATTRIBUTES } from "../../../const";
 
-export interface FullSheetProps {}
+export interface FullSheetProps {
+  className?: string;
+  children?: never;
+}
 
 const createGroup = (
   groupDescription: Record<
@@ -43,20 +46,51 @@ const createGroup = (
   );
 };
 
-const FullCharacter: FunctionComponent<FullSheetProps> = () => {
+const FullCharacter: FunctionComponent<FullSheetProps> = ({
+  className,
+  ...props
+}) => {
   const handleAttributeChange = () => {};
   const handleAbilityChange = () => {};
   return (
-    <Box as="article">
+    <Box as="article" className={className}>
       <FieldGroup
         label="Attributes"
-        css={{ "> main": { flexDirection: "row" } }}
+        css={{
+          "> main": {
+            flexDirection: "row",
+            justifyContent: "space-between",
+            "> *": {
+              flexGrow: 0,
+              flexShrink: 0,
+              flexBasis: "33%",
+              "&:not(:first-child)": {
+                marginLeft: 8,
+              },
+            },
+          },
+        }}
       >
         {createGroup(ATTRIBUTES, handleAttributeChange)}
       </FieldGroup>
-      <FieldGroup label="Abilities" css={{ "> main": {} }}>
+      <Box
+        css={{
+          display: "flex",
+          flexDirection: "row",
+          "> *": {
+            flexGrow: 0,
+            flexShrink: 0,
+            flexBasis: "33%",
+            "&:not(:first-child)": {
+              marginLeft: 8,
+            },
+          },
+        }}
+      >
         {createGroup(ABILITIES, handleAbilityChange)}
-      </FieldGroup>
+        <Box>Col 2</Box>
+        <Box>Col 3</Box>
+      </Box>
     </Box>
   );
 };
