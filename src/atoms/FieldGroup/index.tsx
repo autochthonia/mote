@@ -6,11 +6,16 @@ import { Box } from "reakit";
 export interface FieldGroupProps {
   label: string;
   children: ReactNode;
+  className?: string;
 }
 
-const FieldGroup: FunctionComponent<FieldGroupProps> = ({ label, children }) => {
+const FieldGroup: FunctionComponent<FieldGroupProps> = ({
+  label,
+  children,
+  className,
+}) => {
   return (
-    <Box>
+    <Box className={className}>
       <Box as="header">{label}</Box>
       <Box as="main" css={{ display: "flex", flexDirection: "column" }}>
         {children}
