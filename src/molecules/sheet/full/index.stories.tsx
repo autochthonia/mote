@@ -4,7 +4,7 @@ import { Meta, Story } from "@storybook/react";
 import FullSheet, { FullSheetProps } from ".";
 
 export default {
-  title: "Molecules/FullSheet",
+  title: "Molecules/Full Sheet",
   component: FullSheet,
 } as Meta;
 

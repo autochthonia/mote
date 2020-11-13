@@ -4,6 +4,7 @@ import { Fragment, FunctionComponent } from "react";
 import { Box } from "reakit";
 import DotrangeInput from "../../../atoms/DotrangeInput";
 import FieldGroup from "../../../atoms/FieldGroup";
+import TextInput from "../../../atoms/TextInput";
 import { ABILITIES, ATTRIBUTES } from "../../../const";
 
 export interface FullSheetProps {
@@ -46,6 +47,32 @@ const createGroup = (
   );
 };
 
+const threeColCss: JSX.IntrinsicAttributes["css"] = {
+  "> main": {
+    flexDirection: "row",
+    justifyContent: "space-between",
+    flexWrap: "wrap",
+    "> *": {
+      flexGrow: 0,
+      flexShrink: 0,
+      flexBasis: "33%",
+    },
+  },
+};
+
+const textInputCss: JSX.IntrinsicAttributes["css"] = {
+  display: "flex",
+  span: {
+    flexGrow: 0,
+    flexShrink: 1,
+    flexBasis: "auto",
+  },
+  "input, div[contenteditable]": {
+    flexGrow: 1,
+    flexShrink: 1,
+  },
+};
+
 const FullCharacter: FunctionComponent<FullSheetProps> = ({
   className,
   ...props
@@ -54,23 +81,13 @@ const FullCharacter: FunctionComponent<FullSheetProps> = ({
   const handleAbilityChange = () => {};
   return (
     <Box as="article" className={className}>
-      <FieldGroup
-        label="Attributes"
-        css={{
-          "> main": {
-            flexDirection: "row",
-            justifyContent: "space-between",
-            "> *": {
-              flexGrow: 0,
-              flexShrink: 0,
-              flexBasis: "33%",
-              "&:not(:first-child)": {
-                marginLeft: 8,
-              },
-            },
-          },
-        }}
-      >
+      <FieldGroup label="info" css={threeColCss}>
+        <TextInput css={textInputCss} label="Name" />
+        <TextInput css={textInputCss} label="Player" />
+        <TextInput css={textInputCss} label="Splat" />
+        <TextInput css={textInputCss} label="Caste/Aspect" />
+      </FieldGroup>
+      <FieldGroup label="Attributes" css={threeColCss}>
         {createGroup(ATTRIBUTES, handleAttributeChange)}
       </FieldGroup>
       <Box

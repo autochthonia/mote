@@ -11,37 +11,50 @@ const Dot = forwardRef<
     ComponentProps<typeof Button>,
     "as"
   >
->(({ filled, children, ...props }, ref) => {
-  return (
-    <Button
-      css={{
-        border: "unset",
-        appearance: "unset",
-        outline: "unset",
-        margin: "unset",
-        padding: "unset",
-        background: "unset",
-        ":focus": {
-          svg: {
-            fill: "gray !important",
+>(
+  (
+    {
+      filled,
+      children,
+      unstable_clickOnEnter = true,
+      unstable_clickOnSpace = true,
+      ...props
+    },
+    ref
+  ) => {
+    return (
+      <Button
+        css={{
+          border: "unset",
+          appearance: "unset",
+          outline: "unset",
+          margin: "unset",
+          padding: "unset",
+          background: "unset",
+          ":focus": {
+            svg: {
+              fill: "gray !important",
+            },
           },
-        },
-      }}
-      {...props}
-      ref={ref}
-    >
-      <svg
-        height="1em"
-        width="1em"
-        viewBox="0 0 100 100"
-        stroke="black"
-        stroke-width="8"
-        fill={filled ? "black" : "transparent"}
+        }}
+        unstable_clickOnEnter={unstable_clickOnEnter}
+        unstable_clickOnSpace={unstable_clickOnSpace}
+        {...props}
+        ref={ref}
       >
-        <circle cx="50" cy="50" r="40" />
-      </svg>
-    </Button>
-  );
-});
+        <svg
+          height="1em"
+          width="1em"
+          viewBox="0 0 100 100"
+          stroke="black"
+          stroke-width="8"
+          fill={filled ? "black" : "transparent"}
+        >
+          <circle cx="50" cy="50" r="40" />
+        </svg>
+      </Button>
+    );
+  }
+);
 
 export default Dot;
